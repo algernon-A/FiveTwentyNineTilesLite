@@ -1,5 +1,5 @@
 # Cities Skylines 2 : 529 Tiles Lite
-Enables access to all 529 tiles in the vanilla map, with a choice of one of three methods:
+Enables access to all 529 map tiles, with a choice of one of three methods:
 - **Unlock all tiles** - automatically and immediately unlocks all tiles on the map when you start a new city (or load an existing one).  Quite straightforward.
 - **Provide extra tiles at start** - adds 88 immediately-available tile unlocks when you first start a new city (all milestones will add their usual amount of tile unlocks on top of this); this enables flexibility with your initial start.  Doesn't affect existing saves.
 - **Allocate extra tiles to milestones** - allocates the additional 88 tile unlocks across all regular game milestones, in proportion to the normal amount for each milestone.  This enables steady unlocking over the course of a normal game.  Doesn't affect existing saves.
@@ -12,7 +12,7 @@ The selected unlock mode will be automatically applied to any **new** game.  '**
 When purchasing tiles, the price of the final 88 map tiles will be locked (so the price won't keep on increasing for each tile beyond the vanilla game maximum).
 
 ## Requirements
-- BepInEx 5aw
+- BepInEx 5
 
 ## Installation
 1. Make sure that BepInEx 5 is installed.
