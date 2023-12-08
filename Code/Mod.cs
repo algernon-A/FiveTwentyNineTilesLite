@@ -6,8 +6,6 @@
 
 namespace FiveTwentyNineTiles
 {
-    using System.IO;
-    using System.Reflection;
     using Colossal.IO.AssetDatabase;
     using Colossal.Logging;
     using Game;
@@ -69,7 +67,7 @@ namespace FiveTwentyNineTiles
             ActiveSettings.RegisterInOptionsUI();
 
             // Load saved settings.
-            AssetDatabase.global.LoadSettings("529TileSettings2", ActiveSettings, new ModSettings(this));
+            AssetDatabase.global.LoadSettings("529TilesSettings", ActiveSettings, new ModSettings(this));
 
             // Load translations.
             Localization.LoadTranslations(ActiveSettings, Log);

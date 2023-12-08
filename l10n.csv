@@ -1,11 +1,11 @@
-scope	key	en-US
-Options.SECTION	[algernon.529Tiles]	529 Tiles
-Options.OPTION	UnlockAll	Unlock all tiles
-Options.OPTION_DESCRIPTION	UnlockAll	Automatically and immediately unlocks all tiles on the map when you start a new city (or load an existing one).
-Options.OPTION	ExtraTilesAtStart	Provide extra tiles at start
-Options.OPTION_DESCRIPTION	ExtraTilesAtStart	Adds 88 immediately-available tile unlocks when you first start a new city (all milestones will add their usual amount of tile unlocks on top of this).  Doesn't affect existing saves.
-Options.OPTION	AssignToMilestones	Allocate extra tiles to milestones
-Options.OPTION_DESCRIPTION	AssignToMilestones	Allocates the additional 88 tile unlocks across all regular game milestones, in proportion to the normal amount for each milestone.  Doesn't affect existing saves.
-Options.OPTION	ResetModSettings	Reset to default
-Options.OPTION_DESCRIPTION	ResetModSettings	Resets all 529 Tiles mod settings to default.
-Options.WARNING	ResetModSettings	Reset all 529 Tiles settings to default?  This cannot be undone.
+scope	key	en-US	de-DE
+Options.SECTION	[algernon.529Tiles]	529 Tiles	529 Tiles
+Options.OPTION	UnlockAll	Unlock all tiles	Alle Bereiche freischalten
+Options.OPTION_DESCRIPTION	UnlockAll	Automatically and immediately unlocks all tiles on the map when you start a new city (or load an existing one).	Alle Spielbereiche auf der Karte werden automatisch und sofort entsperrt, wenn man eine neue Stadt startet (oder eine bestehende neu lädt).
+Options.OPTION	ExtraTilesAtStart	Provide extra tiles at start	Zusätzliche Spielbereiche beim Start bereitstellen
+Options.OPTION_DESCRIPTION	ExtraTilesAtStart	Adds 88 immediately-available tile unlocks when you first start a new city (all milestones will add their usual amount of tile unlocks on top of this).  Doesn't affect existing saves.	Fügt sofort 88 verfügbare Spielbereichsentsperrungen hinzu, wenn man eine neue Stadt startet (alle Meilensteine werden die übliche Anzahl an Spielbereichsentsperrungen zusätzlich hinzufügen). Bestehende Speicherstände werden nicht beeinflusst.
+Options.OPTION	AssignToMilestones	Allocate extra tiles to milestones	Meilensteinen zusätzliche Spielbereiche zuweisen
+Options.OPTION_DESCRIPTION	AssignToMilestones	Allocates the additional 88 tile unlocks across all regular game milestones, in proportion to the normal amount for each milestone.  Doesn't affect existing saves.	Allokiert die zusätzlichen 88 Kacheln zur Entsperrung über die regulären Spiel-Meilensteine im Verhältnis zum normalen Kosten für jeden Meilenstein. Beeinflusst die vorhandenen Spielstände nicht.
+Options.OPTION	ResetModSettings	Reset to default	Auf Standard zurücksetzen
+Options.OPTION_DESCRIPTION	ResetModSettings	Resets all 529 Tiles mod settings to default.	Setzt alle 529 Tiles Mod-Einstellungen auf Standardwerte zurück.
+Options.WARNING	ResetModSettings	Reset all 529 Tiles settings to default?  This cannot be undone.	Alle 529 Tiles Einstellungen auf Standard zurücksetzen? Dies kann nicht rückgängig gemacht werden.

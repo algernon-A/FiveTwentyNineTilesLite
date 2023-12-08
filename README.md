@@ -11,6 +11,9 @@ The selected unlock mode will be automatically applied to any **new** game.  '**
 
 When purchasing tiles, the price of the final 88 map tiles will be locked (so the price won't keep on increasing for each tile beyond the vanilla game maximum).
 
+### Safe to remove at any time
+This mod is not required to load any saves made with it.  Saves made with this mod *will* work fine without it (any unlocked tiles will remain unlocked, even if you don't have this mod).  Obviously, without it you're back to a 441 tile maximum (except for any that you've already unlocked).
+
 ## Requirements
 - BepInEx 5
 

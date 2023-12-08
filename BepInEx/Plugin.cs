@@ -16,7 +16,7 @@ namespace FiveTwentyNineTiles
     /// <summary>
     /// BepInEx plugin to substitute for IMod support.
     /// </summary>
-    [BepInPlugin(GUID, "529 Tiles Lite", "1.0")]
+    [BepInPlugin(GUID, "529 Tiles Lite", "1.0.1")]
     [HarmonyPatch]
     public class Plugin : BaseUnityPlugin
     {
