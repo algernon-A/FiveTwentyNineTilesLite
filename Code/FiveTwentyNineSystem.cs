@@ -33,25 +33,28 @@ namespace FiveTwentyNineTiles
         // Query to find locked features.
         private EntityQuery _featureQuery;
 
+        // Query to find our custom milestone component.
+        private EntityQuery _customMilestoneQuery;
+
         /// <summary>
         /// Called by the game in post-deserialization.
         /// </summary>
         /// <param name="context">Game context.</param>
         public void PostDeserialize(Context context)
         {
+            // Revert any existing custom milestone.
+            foreach (Entity entity in _customMilestoneQuery.ToEntityArray(Allocator.Temp))
+            {
+                _log.Info("removing start bonus");
+                EntityManager.AddComponent<Deleted>(entity);
+            }
+
             // Unlock all tiles, if that's what we're doing.
             if (Mod.Instance.ActiveSettings.UnlockAll)
             {
                 _log.Info("unlocking all tiles");
                 EntityManager.RemoveComponent<Native>(_mapTileQuery.ToEntityArray(Allocator.Temp));
 
-                return;
-            }
-
-            // Everything else requires a new game.
-            if (context.purpose != Purpose.NewGame)
-            {
-                _log.Info("not starting a new game");
                 return;
             }
 
@@ -72,18 +75,14 @@ namespace FiveTwentyNineTiles
                             // Remove locking.
                             EntityManager.RemoveComponent<Locked>(entity);
                             EntityManager.RemoveComponent<UnlockRequirement>(entity);
-
-                            // Create new milestone entity with initial unlocked tile count.
-                            EntityManager.AddComponentData(EntityManager.CreateEntity(), new MilestoneData { m_MapTiles = 88 });
-
-                            // Done.
-                            return;
                         }
                     }
                 }
 
-                // If we got here, something went wrong.
-                _log.Error("error unlocking initial map tile limit");
+                // Create new milestone entity with initial unlocked tile count.
+                Entity extraMilestone = EntityManager.CreateEntity();
+                EntityManager.AddComponentData(extraMilestone, new MilestoneData { m_MapTiles = 88 });
+                EntityManager.AddComponentData(extraMilestone, new CustomMilestone { });
             }
 
             // Otherwise, assign extra tiles to milestones, if that's what we're doing.
@@ -116,6 +115,7 @@ namespace FiveTwentyNineTiles
             _milestoneQuery = GetEntityQuery(ComponentType.ReadWrite<MilestoneData>());
             _mapTileQuery = GetEntityQuery(ComponentType.ReadOnly<MapTile>());
             _featureQuery = GetEntityQuery(ComponentType.ReadOnly<FeatureData>(), ComponentType.ReadOnly<PrefabData>(), ComponentType.ReadWrite<Locked>());
+            _customMilestoneQuery = GetEntityQuery(ComponentType.ReadWrite<CustomMilestone>());
             RequireForUpdate(_milestoneQuery);
             RequireForUpdate(_mapTileQuery);
         }
@@ -195,6 +195,34 @@ namespace FiveTwentyNineTiles
                 case 56:
                     milestone.m_MapTiles = 68;
                     break;
+            }
+        }
+
+        /// <summary>
+        /// Custom component to indicate a custom milestone.
+        /// </summary>
+        private struct CustomMilestone : IComponentData, ISerializable
+        {
+            /// <summary>
+            /// Serializes component data.
+            /// </summary>
+            /// <typeparam name="TWriter">Entity data writer type.</typeparam>
+            /// <param name="writer">Entity data writer instance.</param>
+            public void Serialize<TWriter>(TWriter writer)
+                where TWriter : IWriter
+            {
+                writer.Write(88);
+            }
+
+            /// <summary>
+            /// Deserializes component data.
+            /// </summary>
+            /// <typeparam name="TReader">Entity data reader type</typeparam>
+            /// <param name="reader">Entity data reader instance.</param>
+            public void Deserialize<TReader>(TReader reader)
+                where TReader : IReader
+            {
+                reader.Read(out int _);
             }
         }
     }

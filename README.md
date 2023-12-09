@@ -1,13 +1,13 @@
 # Cities Skylines 2 : 529 Tiles Lite
 Enables access to all 529 map tiles, with a choice of one of three methods:
 - **Unlock all tiles** - automatically and immediately unlocks all tiles on the map when you start a new city (or load an existing one).  Quite straightforward.
-- **Provide extra tiles at start** - adds 88 immediately-available tile unlocks when you first start a new city (all milestones will add their usual amount of tile unlocks on top of this); this enables flexibility with your initial start.  Doesn't affect existing saves.
-- **Allocate extra tiles to milestones** - allocates the additional 88 tile unlocks across all regular game milestones, in proportion to the normal amount for each milestone.  This enables steady unlocking over the course of a normal game.  Doesn't affect existing saves.
+- **Provide extra tiles at start** - adds 88 immediately-available tile unlocks when you first start a new city (all milestones will add their usual amount of tile unlocks on top of this); this enables flexibility with your initial start.
+- **Allocate extra tiles to milestones** - allocates the additional 88 tile unlocks across all regular game milestones, in proportion to the normal amount for each milestone.  This enables steady unlocking over the course of a normal game.
 
 ## Instructions
 Install the mod, load to the main menu, and go to 'Settings'.  There will be a mod setting entry there for '529 Tiles' where you can choose the unlock mode (see above) that you want.
 
-The selected unlock mode will be automatically applied to any **new** game.  '**Unlock all**' and '**Provide extra tiles at start**' effects are instant; there is no need to unlock the first milestone to trigger any actions.  '**Unlock all tiles**' will also apply to whenever you **load** an existing save (so you can use this mod to unlock all tiles on an existing save).  
+The selected unlock mode will be automatically applied to any new game started or existing save loaded.  '**Unlock all**' and '**Provide extra tiles at start**' effects are instant; there is no need to unlock the first milestone to trigger any actions.
 
 When purchasing tiles, the price of the final 88 map tiles will be locked (so the price won't keep on increasing for each tile beyond the vanilla game maximum).
 
