@@ -201,29 +201,8 @@ namespace FiveTwentyNineTiles
         /// <summary>
         /// Custom component to indicate a custom milestone.
         /// </summary>
-        private struct CustomMilestone : IComponentData, ISerializable
+        private struct CustomMilestone : IComponentData
         {
-            /// <summary>
-            /// Serializes component data.
-            /// </summary>
-            /// <typeparam name="TWriter">Entity data writer type.</typeparam>
-            /// <param name="writer">Entity data writer instance.</param>
-            public void Serialize<TWriter>(TWriter writer)
-                where TWriter : IWriter
-            {
-                writer.Write(88);
-            }
-
-            /// <summary>
-            /// Deserializes component data.
-            /// </summary>
-            /// <typeparam name="TReader">Entity data reader type</typeparam>
-            /// <param name="reader">Entity data reader instance.</param>
-            public void Deserialize<TReader>(TReader reader)
-                where TReader : IReader
-            {
-                reader.Read(out int _);
-            }
         }
     }
 }

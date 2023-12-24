@@ -4,6 +4,8 @@ Enables access to all 529 map tiles, with a choice of one of three methods:
 - **Provide extra tiles at start** - adds 88 immediately-available tile unlocks when you first start a new city (all milestones will add their usual amount of tile unlocks on top of this); this enables flexibility with your initial start.
 - **Allocate extra tiles to milestones** - allocates the additional 88 tile unlocks across all regular game milestones, in proportion to the normal amount for each milestone. This enables steady unlocking over the course of a normal game.
 
+![529 Tiles options](https://i.imgur.com/gIIqmjm.png)
+
 ## Instructions
 Install the mod, load to the main menu, and go to 'Settings'. There will be a mod setting entry there for '529 Tiles' where you can choose the unlock mode (see above) that you want.
 
@@ -19,6 +21,7 @@ This mod is not required to load any saves made with it. Saves made with this mo
 
 ## Installation
 1. Make sure that BepInEx 5 is installed.
+1. Run the game at least once after you've installed BepInEx and before you install this mod.
 1. Place the `FiveTwentyNineTilesLite` folder in the archive in your BepInEx `Plugins` folder.
 
 ## Translations

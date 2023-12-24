@@ -33,7 +33,7 @@ namespace FiveTwentyNineTiles
         /// <summary>
         /// Gets or sets a value indicating whether the entire map should be unlocked on load.
         /// </summary>
-        [SettingsUISection("UnlockAll")]
+        [SettingsUISection("UnlockMode")]
         public bool UnlockAll
         {
             get => _unlockAll;
@@ -60,7 +60,7 @@ namespace FiveTwentyNineTiles
         /// <summary>
         /// Gets or sets a value indicating whether the entire map should be unlocked on load.
         /// </summary>
-        [SettingsUISection("ExtraTilesAtStart")]
+        [SettingsUISection("UnlockMode")]
         public bool ExtraTilesAtStart
         {
             get => _extraAtStart;
@@ -84,7 +84,7 @@ namespace FiveTwentyNineTiles
         /// <summary>
         /// Gets or sets a value indicating whether the entire map should be unlocked on load.
         /// </summary>
-        [SettingsUISection("AssignToMilestones")]
+        [SettingsUISection("UnlockMode")]
         public bool AssignToMilestones
         {
             get => _milestones;
@@ -114,7 +114,7 @@ namespace FiveTwentyNineTiles
         public bool Contra { get; set; } = false;
 
         /// <summary>
-        /// Gets or sets a value indicating whether the mod's settings should be reset.
+        /// Sets a value indicating whether the mod's settings should be reset.
         /// </summary>
         [XmlIgnore]
         [SettingsUIButton]
@@ -122,9 +122,6 @@ namespace FiveTwentyNineTiles
         [SettingsUIConfirmation]
         public bool ResetModSettings
         {
-            // Dummy getter.
-            get => false;
-
             set
             {
                 // Apply defaults.
