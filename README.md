@@ -3,6 +3,7 @@ Enables access to all 529 map tiles, with a choice of one of three methods:
 - **Unlock all tiles** - automatically and immediately unlocks all tiles on the map when you start a new city (or load an existing one). Quite straightforward.
 - **Provide extra tiles at start** - adds 88 immediately-available tile unlocks when you first start a new city (all milestones will add their usual amount of tile unlocks on top of this); this enables flexibility with your initial start.
 - **Allocate extra tiles to milestones** - allocates the additional 88 tile unlocks across all regular game milestones, in proportion to the normal amount for each milestone. This enables steady unlocking over the course of a normal game.
+- Optional **custom selection of starting tiles** (if 'Unlock all tiles' is not selected), which enables you to choose your own nine starting tiles (at no cost) when starting a new map.
 
 ![529 Tiles options](https://i.imgur.com/gIIqmjm.png)
 
@@ -12,6 +13,8 @@ Install the mod, load to the main menu, and go to 'Settings'. There will be a mo
 The selected unlock mode will be automatically applied to any new game started or existing save loaded. '**Unlock all**' and '**Provide extra tiles at start**' effects are instant; there is no need to unlock the first milestone to trigger any actions.
 
 When purchasing tiles, the price of the final 88 map tiles will be locked (so the price won't keep on increasing for each tile beyond the vanilla game maximum).
+
+The option to choose your own starting tiles is only available if 'unlock all tiles' is not selected.  When this option is selected any new maps will start with zero existing unlocked tiles, so you can choose and unlock your own starting tiles normally (if using this option the first nine tile unlocks are free).
 
 ### Safe to remove at any time
 This mod is not required to load any saves made with it. Saves made with this mod *will* work fine without it (any unlocked tiles will remain unlocked, even if you don't have this mod). Obviously, without it you're back to a 441 tile maximum (except for any that you've already unlocked).
