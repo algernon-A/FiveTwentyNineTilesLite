@@ -32,6 +32,10 @@ namespace FiveTwentyNineTiles
         {
             Mod.Instance.Log.Info("transpiling " + original.DeclaringType + '.' + original.Name);
 
+            // Lower bounds check for free first nine tiles.
+            FieldInfo m_Cost = AccessTools.Field(typeof(MapTilePurchaseSystem), "m_Cost");
+            bool firstCost = false;
+
             // Parse instructions.
             IEnumerator<CodeInstruction> instructionEnumerator = instructions.GetEnumerator();
             while (instructionEnumerator.MoveNext())
@@ -60,8 +64,45 @@ namespace FiveTwentyNineTiles
                     }
                 }
 
+                // Otherwise, looking for second store to MapTilePurchaseSystem.m_Cost.
+                else if (instruction.StoresField(m_Cost))
+                {
+                    if (!firstCost)
+                    {
+                        firstCost = true;
+                    }
+                    else
+                    {
+                        // Insert call to our custom method.
+                        Mod.Instance.Log.Debug("found second m_Cost store");
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, 5);
+                        yield return new CodeInstruction(OpCodes.Ldloc_S, 6);
+                        yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(MapTilePurchaseSystemPatches), nameof(CheckFreeTiles)));
+                    }
+                }
+
                 yield return instruction;
             }
+        }
+
+        /// <summary>
+        /// Checks to see if this tile is one of the first nine; if so, the cost is free.
+        /// </summary>
+        /// <param name="cost">Calculated tile cost.</param>
+        /// <param name="numTiles">Number of selected tiles processed this update.</param>
+        /// <param name="ownedTiles">Number of already owned tiles.</param>
+        /// <returns>0 if this tile is one of the first nine, otherwise returns the calculated cost.</returns>
+        private static float CheckFreeTiles(float cost, int numTiles, int ownedTiles)
+        {
+            // Check tile count.
+            if (numTiles + ownedTiles <= 9)
+            {
+                // First nine tiles - return free tile.
+                return 0f;
+            }
+
+            // Otherwise, not free - return the calculated cost.
+            return cost;
         }
     }
 }

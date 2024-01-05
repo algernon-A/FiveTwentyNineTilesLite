@@ -106,6 +106,13 @@ namespace FiveTwentyNineTiles
         }
 
         /// <summary>
+        /// Gets or sets a value indicating whether there should be no unlocked starting tiles when starting a new map.
+        /// </summary>
+        [SettingsUIHideByCondition(typeof(ModSettings), nameof(StartingTilesHidden))]
+        [SettingsUISection("StartingOptions")]
+        public bool NoStartingTiles { get; set; } = false;
+
+        /// <summary>
         /// Gets or sets a value indicating whether, well, nothing really.
         /// This is just the inverse of <see cref="UnlockAll"/>, to ensure the the JSON contains at least one non-default value.
         /// This is to workaround a bug where the settings file isn't overwritten when there are no non-default settings.
@@ -143,7 +150,15 @@ namespace FiveTwentyNineTiles
             _unlockAll = true;
             _extraAtStart = false;
             _milestones = false;
+
+            NoStartingTiles = false;
         }
+
+        /// <summary>
+        /// Returns a value indicating whether the no starting tiles option should be hidden.
+        /// </summary>
+        /// <returns><c>true</c> (hide starting tiles option) if 'Unlock all tiles' is selected, <c>false</c> (don't hide) otherwise.</returns>
+        public bool StartingTilesHidden() => UnlockAll;
 
         /// <summary>
         /// Enables Unlock All as the default option and that no options are duplicated.

@@ -64,20 +64,7 @@ namespace FiveTwentyNineTiles
                 _log.Info("allocating extra tiles to start");
 
                 // Unlock map tile purchasing feature.
-                PrefabSystem prefabSystem = World.GetOrCreateSystemManaged<PrefabSystem>();
-                foreach (Entity entity in _featureQuery.ToEntityArray(Allocator.Temp))
-                {
-                    if (EntityManager.TryGetComponent(entity, out PrefabData prefabData) && prefabSystem.GetPrefab<PrefabBase>(prefabData) is PrefabBase prefab)
-                    {
-                        // Looking for map tiles feature.
-                        if (prefab.name.Equals("Map Tiles"))
-                        {
-                            // Remove locking.
-                            EntityManager.RemoveComponent<Locked>(entity);
-                            EntityManager.RemoveComponent<UnlockRequirement>(entity);
-                        }
-                    }
-                }
+                EnableTilePurchasing();
 
                 // Create new milestone entity with initial unlocked tile count.
                 Entity extraMilestone = EntityManager.CreateEntity();
@@ -98,6 +85,14 @@ namespace FiveTwentyNineTiles
                         EntityManager.SetComponentData(entity, milestone);
                     }
                 }
+            }
+
+            // Remove all unlocked tiles if this is a new game. and we're starting with no unlocked tiles.
+            if (context.purpose == Purpose.NewGame && Mod.Instance.ActiveSettings.NoStartingTiles)
+            {
+                // Ensure purchasing feature is unlocked before clearing all tiles.
+                EnableTilePurchasing();
+                EntityManager.AddComponent<Native>(_mapTileQuery.ToEntityArray(Allocator.Temp));
             }
         }
 
@@ -125,6 +120,27 @@ namespace FiveTwentyNineTiles
         /// </summary>
         protected override void OnUpdate()
         {
+        }
+
+        /// <summary>
+        /// Unlocks the map tile purchasing feature.
+        /// </summary>
+        private void EnableTilePurchasing()
+        {
+            PrefabSystem prefabSystem = World.GetOrCreateSystemManaged<PrefabSystem>();
+            foreach (Entity entity in _featureQuery.ToEntityArray(Allocator.Temp))
+            {
+                if (EntityManager.TryGetComponent(entity, out PrefabData prefabData) && prefabSystem.GetPrefab<PrefabBase>(prefabData) is PrefabBase prefab)
+                {
+                    // Looking for map tiles feature.
+                    if (prefab.name.Equals("Map Tiles"))
+                    {
+                        // Remove locking.
+                        EntityManager.RemoveComponent<Locked>(entity);
+                        EntityManager.RemoveComponent<UnlockRequirement>(entity);
+                    }
+                }
+            }
         }
 
         /// <summary>

@@ -1,3 +1,7 @@
+### 1.1
+- Added feature to select your own starting tiles.
+- Added Japanese, Korean, and Polish localizations from CrowdIn translation volunteers.
+
 ### 1.0.3
 - Added Spanish and Simplified Chinese localizations from CrowdIn translation volunteers.
 - Minor code cleanups.
