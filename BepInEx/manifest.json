@@ -1,6 +1,6 @@
 {
   "name": "529TilesLite",
-  "version_number": "1.1.0",
+  "version_number": "1.1.1",
   "website_url": "https://github.com/algernon-A/FiveTwentyNineTilesLite",
   "description": "Access all 529 game tiles in various ways, including unlocking all at the start",
   "dependencies": [

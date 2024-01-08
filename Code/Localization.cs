@@ -36,11 +36,16 @@ namespace FiveTwentyNineTiles
                     List<string> lines = new ();
                     while (!reader.EndOfStream)
                     {
-                        lines.Add(reader.ReadLine());
+                        // Skip empty lines.
+                        string line = reader.ReadLine();
+                        if (!string.IsNullOrWhiteSpace(line))
+                        {
+                            lines.Add(line);
+                        }
                     }
 
                     // Iterate through each game locale.
-                    log.Debug("parsing translation file");
+                    log.Info("parsing translation file");
                     IEnumerable<string[]> fileLines = lines.Select(x => x.Split('\t'));
                     foreach (string localeID in GameManager.instance.localizationManager.GetSupportedLocales())
                     {
@@ -61,7 +66,7 @@ namespace FiveTwentyNineTiles
                         catch (Exception e)
                         {
                             // Don't let a single failure stop us.
-                            log.Error(e, "exception reading localization for locale " + localeID);
+                            log.Error(e, $"exception reading localization for locale {localeID}");
                         }
                     }
                 }
