@@ -72,7 +72,25 @@ namespace FiveTwentyNineTiles
                 EntityManager.AddComponentData(extraMilestone, new CustomMilestone { });
             }
 
-            // Otherwise, assign extra tiles to milestones, if that's what we're doing.
+            // Otherwise assign extra tiles to the final milestone, if that's what we're doing.
+            else if (Mod.Instance.ActiveSettings.ExtraTilesAtEnd)
+            {
+                // Iterate through milestones, looking for th elast one.
+                foreach (Entity entity in _milestoneQuery.ToEntityArray(Allocator.Temp))
+                {
+                    // Final milestone has 56 map tile unlocks.
+                    if (EntityManager.TryGetComponent(entity, out MilestoneData milestone) && milestone.m_MapTiles == 56)
+                    {
+                        milestone.m_MapTiles += 88;
+                        EntityManager.SetComponentData(entity, milestone);
+
+                        // All done here.
+                        break;
+                    }
+                }
+            }
+
+            // Otherwise, assign extra tiles across all milestones, if that's what we're doing.
             else if (Mod.Instance.ActiveSettings.AssignToMilestones)
             {
                 _log.Info("updating milestones");

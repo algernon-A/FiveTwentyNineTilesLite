@@ -19,6 +19,7 @@ namespace FiveTwentyNineTiles
     {
         private bool _unlockAll = true;
         private bool _extraAtStart = false;
+        private bool _extraAtEnd = false;
         private bool _milestones = false;
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace FiveTwentyNineTiles
                 if (value)
                 {
                     _extraAtStart = false;
+                    _extraAtEnd = false;
                     _milestones = false;
                 }
 
@@ -73,7 +75,33 @@ namespace FiveTwentyNineTiles
                 if (value)
                 {
                     _unlockAll = false;
+                    _extraAtEnd = false;
                     _milestones = false;
+                }
+
+                // Ensure state.
+                EnsureState();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the extra tiles should be allocated to the final milestone.
+        /// </summary>
+        [SettingsUISection("UnlockMode")]
+        public bool ExtraTilesAtEnd
+        {
+            get => _extraAtEnd;
+
+            set
+            {
+                _extraAtEnd = value;
+
+                // Clear conflicting settings.
+                if (value)
+                {
+                    _unlockAll = false;
+                    _milestones = false;
+                    _extraAtStart = false;
                 }
 
                 // Ensure state.
@@ -98,6 +126,7 @@ namespace FiveTwentyNineTiles
                 {
                     _unlockAll = false;
                     _extraAtStart = false;
+                    _extraAtEnd = false;
                 }
 
                 // Ensure state.
@@ -149,6 +178,7 @@ namespace FiveTwentyNineTiles
         {
             _unlockAll = true;
             _extraAtStart = false;
+            _extraAtEnd = false;
             _milestones = false;
 
             NoStartingTiles = false;
@@ -165,7 +195,7 @@ namespace FiveTwentyNineTiles
         /// </summary>
         private void EnsureState()
         {
-            if (!_unlockAll && !_extraAtStart && !_milestones)
+            if (!_unlockAll && !_extraAtStart && !_extraAtEnd && !_milestones)
             {
                 UnlockAll = true;
             }

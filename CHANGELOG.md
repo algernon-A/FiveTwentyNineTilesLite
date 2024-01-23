@@ -1,3 +1,6 @@
+### 1.2
+- Added feature to have all additional tiles added at the final milestone.
+
 ### 1.1.1
 - Added Traditional Chinese localization from CrowdIn translation volunteers.
 - Updated localization file handling.
