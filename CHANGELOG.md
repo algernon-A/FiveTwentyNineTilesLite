@@ -1,3 +1,6 @@
+### 1.2.1
+- Fix extra tiles being granted when saving the game, quitting to main menu, and immediately reloading the new save when milestone allocation is selected.
+
 ### 1.2
 - Added feature to have all additional tiles added at the final milestone.
 
